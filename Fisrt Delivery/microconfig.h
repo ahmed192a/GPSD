@@ -11,5 +11,6 @@
 #include <tm4c123gh6pm.h>
 #include "gpio.h"
 #include "systick.h"
+#include "lcd.h"
 
 #endif /* MICROCONFIG_H_ */
