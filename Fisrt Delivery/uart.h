@@ -42,4 +42,8 @@ typedef struct
 
 void UART_init(const UART_ConfigType *Config_Ptr);
 void UART_sendByte(const uint8_t data, UART_NUMBER num);
+uint8_t UART_recieveByte(UART_NUMBER num);
+void UART_sendString(char * string, UART_NUMBER uart_num);
+uint8_t UART_receiveString(char *ptr_string , UART_NUMBER uart_num);
+
 #endif /* UART_H_ */

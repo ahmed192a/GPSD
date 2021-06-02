@@ -28,7 +28,7 @@ void main(void){
     UART_init(&uart1);
 
 	LCD_clearScreen();
-	LCD_displayString("welcome to ..");
+
     while(1){
         if(g_Interrupt_Flag==1){
 			Led_on(); 
@@ -36,5 +36,7 @@ void main(void){
 		else{
 			Led_off();
 		}
+		c = UART_recieveByte(u1_C);
+		UART_sendByte(u0,c);
     }
 }

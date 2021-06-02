@@ -427,3 +427,102 @@ void UART_sendByte(const uint8_t data, UART_NUMBER num)
     }
 
 }
+
+
+/************************************************************************************************
+ * Description : Function to receive a data from another device
+ * Arguments   : the UART number
+ * Return      : the received data
+ ************************************************************************************************/
+uint8_t UART_recieveByte(UART_NUMBER num)
+{
+    if(num == u0)
+    {
+        while((UART0_FR_R&0x0010) != 0);      // wait until RXFE is 0
+        return((char)(UART0_DR_R&0xFF));
+    }
+    else if(num == u1_B)
+    {
+        while((UART1_FR_R&0x0010) != 0);      // wait until RXFE is 0
+        return((char)(UART1_DR_R&0xFF));
+    }
+    else if(num == u1_C)
+    {
+        while((UART1_FR_R&0x0010) != 0);      // wait until RXFE is 0
+        return((char)(UART1_DR_R&0xFF));
+    }
+    else if(num == u3)
+    {
+        while((UART3_FR_R&0x0010) != 0);      // wait until RXFE is 0
+        return((char)(UART3_DR_R&0xFF));
+    }
+    else if(num == u4)
+    {
+        while((UART4_FR_R&0x0010) != 0);      // wait until RXFE is 0
+        return((char)(UART4_DR_R&0xFF));
+    }
+    else if(num == u5)
+    {
+        while((UART5_FR_R&0x0010) != 0);      // wait until RXFE is 0
+        return((char)(UART5_DR_R&0xFF));
+    }
+    else if(num == u6)
+    {
+        while((UART6_FR_R&0x0010) != 0);      // wait until RXFE is 0
+        return((char)(UART6_DR_R&0xFF));
+    }
+    else
+    {
+        while((UART7_FR_R&0x0010) != 0);      // wait until RXFE is 0
+        return((char)(UART7_DR_R&0xFF));
+    }
+}
+
+/************************************************************************************************
+ * Description : Function to send a data (of type string) to another device
+ * Arguments   : string to be sent, the UART number
+ * Return      : none
+ ************************************************************************************************/
+void UART_sendString(char * string, UART_NUMBER uart_num)
+{
+    while(*string)
+    {
+        UART_sendByte(*(string++), uart_num);
+    }
+}
+
+
+
+/************************************************************************************************
+ * Description : Function to receive a data (of type string) from another device
+ * Arguments   : string to be save the received data in, the UART number
+ * Return      : length of the string
+ ************************************************************************************************//
+uint8_t UART_receiveString(char *ptr_string , UART_NUMBER uart_num)
+{
+    char ch;
+    uint8_t len = 0;
+    while(1)
+    {
+        ch = UART_recieveByte(uart_num);
+        UART_sendByte(ch,uart_num);
+        if((ch=='\r') || (ch=='\n'))             // Read till enter key is pressed
+        {
+        if(len!=0)                 // Wait till atleast 1 char is received
+        {
+           ptr_string[len]=0;    // once enter key is pressed null terminate the string and break the loop
+               break;
+        }
+        }
+        else if((ch=='\b') && (len!=0))
+        {
+            len--;                     // If backspace is pressed then decrement the index to remove the old char
+        }
+        else
+        {
+            ptr_string[len]=ch;               //copy the char into string and increment the index
+            len++;
+        }
+    }
+    return len;
+}
