@@ -16,6 +16,7 @@ extern volatile unsigned char g_Interrupt_Flag ;
 
 void main(void){
 	char c;
+	PLL_Init();
 	LCD_init();
     GPIOF_Init();                 /**  Initialize the GPIO of PF2 BLUE LED **/
     SW1_Int_Interrupt();          /*Enable Interrupt on PF4 Switch 1 */

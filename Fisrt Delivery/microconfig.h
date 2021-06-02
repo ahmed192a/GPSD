@@ -13,5 +13,6 @@
 #include "systick.h"
 #include "lcd.h"
 #include "uart.h"
+#include "PLL.h"
 
 #endif /* MICROCONFIG_H_ */
