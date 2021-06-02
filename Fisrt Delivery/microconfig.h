@@ -12,5 +12,6 @@
 #include "gpio.h"
 #include "systick.h"
 #include "lcd.h"
+#include "uart.h"
 
 #endif /* MICROCONFIG_H_ */
