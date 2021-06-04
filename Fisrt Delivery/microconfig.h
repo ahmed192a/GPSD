@@ -14,5 +14,6 @@
 #include "lcd.h"
 #include "uart.h"
 #include "PLL.h"
+#include "gps.h"
 
 #endif /* MICROCONFIG_H_ */

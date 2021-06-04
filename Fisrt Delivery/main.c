@@ -29,15 +29,17 @@ void main(void){
     UART_init(&uart1);
 
 	LCD_clearScreen();
+	LCD_displayString("Welcome to ..");           /*First, Print Welcome sentence*/
+
 
     while(1){
         if(g_Interrupt_Flag==1){
-			Led_on(); 
+			readGPSa();
         }
 		else{
-			Led_off();
+			Led_on(); 
 		}
-		c = UART_recieveByte(u1_C);
-		UART_sendByte(u0,c);
+		
     }
+	
 }
