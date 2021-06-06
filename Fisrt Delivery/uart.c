@@ -497,7 +497,7 @@ void UART_sendString(char * string, UART_NUMBER uart_num)
  * Description : Function to receive a data (of type string) from another device
  * Arguments   : string to be save the received data in, the UART number
  * Return      : length of the string
- ************************************************************************************************//
+ ************************************************************************************************/
 uint8_t UART_receiveString(char *ptr_string , UART_NUMBER uart_num)
 {
     char ch;
