@@ -144,9 +144,9 @@ void Insert_data(){
     else
     {
         UART_sendString("\n\rEntering Data..\n", u0);
-        FILE_Putstr(srcFilePtr_C, longitudeResult);
+		FILE_Putstr(srcFilePtr_C, latitudeResult);
         FILE_PutCh(srcFilePtr_C, ',');
-        FILE_Putstr(srcFilePtr_C, latitudeResult);
+		FILE_Putstr(srcFilePtr_C, longitudeResult);
         FILE_Putstr(srcFilePtr_C, "\n");
         FILE_PutCh(srcFilePtr_C, EOFF);
         UART_sendString("\n\rData saved, closing the file.\n", u0);
