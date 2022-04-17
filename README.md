@@ -1,7 +1,10 @@
 # GPS Tracking system
 Tracking System using Tiva c and GPS to get the Coordinates and Save them in SD card<br>
 these Coordinates can be displayed on PC using python script in the project or Google earth<br>
-For More details [check the report](https://github.com/ahmed192a/GPSD/blob/master/Micro2.pdf)
+* For More details [check the report](https://github.com/ahmed192a/GPSD/blob/master/Micro2.pdf)
+* Video of the Project [link](https://www.youtube.com/watch?v=pYU99HQ86sI)
+
+
 
 ## The project is implemented using the following hardware:
 * Tiva-c
